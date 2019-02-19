@@ -1,0 +1,18 @@
+Histoire des bombes
+
+***(D étant un noyau de deutérium 2H, T un noyau de tritium 3H, n un neutron et p un proton, He un noyau d'hélium)***
+
+(9e siècle) poudre noire : 2 KNO3 + 3 C + S ? K2S + 3 CO2 + N2 Chine
+(1863) TNT : 2 C7H5N3O6 ? 3 N2 + 5 H2 + 12 CO + 2 C ALLEMAGNE
+***possible arme nucléaire terroriste 10 kt : HEU (Highly Enriched Uranium 235) : n + 235U ? Ba + Kr + 3 n 
+(6 aout 1945) Little Boy 15 kt : D + T ? 4He + n + 17,6 MeV (qui libère uranium 235) USA
+(9 aout 1945) Fat Man 27 kt : (plutonium 239) Plutonium core surrounded by 5,300 lbs of high explosives USA
+(26 avril 1980) Tinderbox/Colwick 140kt (+ puissante GB) : réaction inconnue  
+(3 septembre 2017) sans nom 140kt(+ puissant) : D + D ? 3He + n + 3,3 MeV Corée du nord
+(24 aout 1968) Canopus essai français 2,6 Mt : D + T ? 4He + n + 17,6 MeV France
+(1981) DF-5A Chine + puissant 5 Mt : composition inconnue
+(1er novembre 1952) Ivy Mike aux États-Unis première bombe H 10,4 Mt: 7Li + n ? T + 4He + n USA
+
+(1er mars 1954) Castle Bravo bombe H plus puissante des États-Unis 15Mt :  USA
+
+(30 octobre 1961) Tsar Bomba 57 Mt Bombe H : 3He + D ? 4He + p RUSSIE
