@@ -1,0 +1,16 @@
+{
+  "name": "bombes-historiques",
+  "version": "1.0.0",
+  "description": "Projet créé dans le cadre d'un apprentissage scolaire",
+  "main": "index.js",
+  "git respository": "Bombes historiques",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laurent Arsenault, Jakob Boulanger, Anthony Breton, Samarône Elmi et Wilfried Fotso",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
