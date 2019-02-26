@@ -44,11 +44,66 @@ var app = express();
         '  </body>\n' +
         '</html>');
     //---------------------------------------------------------------------------------------------------------------------------------------
-})*/
+    //Mettre un marqueur lors du click
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: -25.363882, lng: 131.044922 }
+  });
 
+  map.addListener('click', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+}
+
+function placeMarkerAndPanTo(latLng, map) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  map.panTo(latLng);
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+})*/
+//Portion de code provenant de https://developers.google.com/maps/documentation/javascript/examples/map-simple
 app.get('/menu', function(req, res) {
     res.setHeader('Content-Type', 'text/html');
-    res.send('<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d849077.6862201064!2d-75.31522263718539!3d45.65063484645109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sca!4v1551193307074" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>');
+    res.send('<!DOCTYPE html>\n' +
+        '<html>\n' +
+        '  <head>\n' +
+        '    <title>Simple Map</title>\n' +
+        '    <meta name="viewport" content="initial-scale=1.0">\n' +
+        '    <meta charset="utf-8">\n' +
+        '    <style>\n' +
+        '      /* Always set the map height explicitly to define the size of the div\n' +
+        '       * element that contains the map. */\n' +
+        '      #map {\n' +
+        '        height: 100%;\n' +
+        '      }\n' +
+        '      /* Optional: Makes the sample page fill the window. */\n' +
+        '      html, body {\n' +
+        '        height: 100%;\n' +
+        '        margin: 0;\n' +
+        '        padding: 0;\n' +
+        '      }\n' +
+        '    </style>\n' +
+        '  </head>\n' +
+        '  <body>\n' +
+        '    <div id="map"></div>\n' +
+        '    <script>\n' +
+        '      var map;\n' +
+        '      function initMap() {\n' +
+        '        map = new google.maps.Map(document.getElementById(\'map\'), {\n' +
+        '          center: {lat: -34.397, lng: 150.644},\n' +
+        '          zoom: 8\n' +
+        '        });\n' +
+        '      }\n' +
+        '    </script>\n' +
+        '    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihwcjUOYV5BOj87XhHSbOQY9CdLjesO4&callback=initMap"\n' +
+        '    async defer></script>\n' +
+        '  </body>\n' +
+        '</html>');
 })
 .get('/mainPage', function(req, res) {
     res.setHeader('Content-Type', 'text/html');
