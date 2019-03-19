@@ -26,6 +26,24 @@ async function bob() {
 
 bob();
 
+
 /*getInfoBombes(3, function() {
     console.log.....
 })*/
+
+class InfosDB {
+    /**
+     * Retourne la liste à utiliser dans la page principale
+     * @param callback
+     */
+    static getBombList(callback) {
+        callback(null, [
+            {
+                name:'test'
+            },
+            {
+                name:'test 2'
+            }
+        ]);
+    }
+}
