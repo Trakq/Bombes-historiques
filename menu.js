@@ -45,11 +45,11 @@ app.get('/menu', function(req, res) {
 })
 
 
-    
+
     .get('/mainPage', function(req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.send('Bienvenue dans le menu');
-})
+    })
 
     .use(function(req, res, next){
         res.setHeader('Content-Type', 'text/plain');
