@@ -10,7 +10,10 @@
   "author": "Laurent Arsenault, Jakob Boulanger, Anthony Breton, Samarône Elmi et Wilfried Fotso",
   "license": "ISC",
   "dependencies": {
+    "basic-auth": "^2.0.1",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "htpasswd": "^2.4.0",
+    "http-auth": "^3.2.3"
   }
 }
