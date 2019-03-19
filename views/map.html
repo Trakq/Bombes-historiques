@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bombes historiques</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 830px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 45%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        /*
+        Addition des pages pop up. Source : https://developers.google.com/maps/documentation/javascript/examples/overlay-popup
+         */
+         .popup-bubble {
+            /* Position the bubble centred-above its parent.*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -100%);
+            /* Style the bubble.*/
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            overflow-y: auto;
+            max-height: 60px;
+            box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.5);
+        }
+        /*The parent of the bubble. A zero-height div at the top of the tip.*/
+        .popup-bubble-anchor {
+            /* Position the div a fixed distance above the tip.*/
+            position: absolute;
+            width: 100%;
+            bottom: /* TIP_HEIGHT= */ 8px;
+            left: 0;
+        }
+        /* This element draws the tip.*/
+        .popup-bubble-anchor::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Center the tip horizontally.*/
+            transform: translate(-50%, 0);
+            /* The tip is a https://css-tricks.com/snippets/css/css-triangle/*/
+            width: 0;
+            height: 0;
+            /* The tip is 8px high, and 12px wide.*/
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: /* TIP_HEIGHT=  */ 8px solid white;
+        }
+        /* JavaScript will position this div at the bottom of the popup tip.*/
+        .popup-container {
+            cursor: auto;
+            height: 0;
+            position: absolute;
+            /* The max width of the info window.*/
+            width: 750px;
+        }
+
+    </style>
+</head>
+<body>
+<!--
+<div id="map"></div>
+<div id="content">
+    Hello world!
+</div>
+<div id="floating-panel">
+    <input onclick="deleteMarkers();" type=button value="Delete Markers">
+</div>
+<script>
+
+    // In the following example, markers appear when the user clicks on the map.
+    // The markers are stored in an array.
+    // The user can then click an option to hide, show or delete the markers.
+    var markers = [];
+    var map, popup, Popup;
+
+
+    function initMap() {
+        var center = {lat: 43.651, lng: -79.347};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: center,
+            mapTypeId: 'terrain'
+        });
+
+
+        // This event listener will call addMarker() when the map is clicked.
+        map.addListener('click', function(event) {
+            deleteMarkers();
+            addMarker(event.latLng);
+
+
+            Popup = createPopupClass();
+            popup = new Popup(event.latLng,
+                document.getElementById('content'));
+            popup.setMap(map);
+
+        });
+
+
+
+
+    }
+
+    // Adds a marker to the map and push to the array.
+    function addMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+
+        });
+        markers.push(marker);
+
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+        setMapOnAll(map);
+    }
+
+    // Deletes all markers in the array by removing references to them.
+    function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+    }
+
+    function createPopupClass() {
+
+        function Popup(position, content) {
+            this.position = position;
+
+            content.classList.add('popup-bubble');
+
+            // This zero-height div is positioned at the bottom of the bubble.
+            var bubbleAnchor = document.createElement('div');
+            bubbleAnchor.classList.add('popup-bubble-anchor');
+            bubbleAnchor.appendChild(content);
+
+            // This zero-height div is positioned at the bottom of the tip.
+            this.containerDiv = document.createElement('div');
+            this.containerDiv.classList.add('popup-container');
+            this.containerDiv.appendChild(bubbleAnchor);
+
+            // Optionally stop clicks, etc., from bubbling up to the map.
+            google.maps.OverlayView.preventMapHitsAndGesturesFrom(this.containerDiv);
+        }
+        // ES5 magic to extend google.maps.OverlayView.
+        Popup.prototype = Object.create(google.maps.OverlayView.prototype);
+
+        // Called when the popup is added to the map.
+        Popup.prototype.onAdd = function() {
+            this.getPanes().floatPane.appendChild(this.containerDiv);
+        };
+
+        // Called when the popup is removed from the map.
+        Popup.prototype.onRemove = function() {
+            if (this.containerDiv.parentElement) {
+                this.containerDiv.parentElement.removeChild(this.containerDiv);
+            }
+        };
+
+       //    Called each frame when the popup needs to draw itself.
+           Popup.prototype.draw = function() {
+            var divPosition = this.getProjection().fromLatLngToDivPixel(this.position);
+
+            // Hide the popup when it is far out of view.
+            var display =
+                Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ?
+                    'block' :
+                    'none';
+
+            if (display === 'block') {
+                this.containerDiv.style.left = divPosition.x + 'px';
+                this.containerDiv.style.top = divPosition.y + 'px';
+            }
+            if (this.containerDiv.style.display !== display) {
+                this.containerDiv.style.display = display;
+            }
+        };
+
+        return Popup;
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihwcjUOYV5BOj87XhHSbOQY9CdLjesO4&callback=initMap">
+</script>
+-->
+<div style="background-color: aqua">
+    allo
+    <div style="background-color: firebrick; width: 200px">patate</div>
+    navet
+    <select>
+       #zzzzzzzzzzzzzzzzzzzzzzzzzzzz#
+    </select>
+</div>
+</body>
+</html>
