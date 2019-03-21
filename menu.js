@@ -5,42 +5,7 @@ var app = express();
 //Portion de code provenant de https://developers.google.com/maps/documentation/javascript/examples/map-simple
 app.get('/menu', function(req, res) {
     res.setHeader('Content-Type', 'text/html');
-    res.send(
-        '<!DOCTYPE html>\n' +
-        '<html>\n' +
-        '  <head>\n' +
-        '    <title>Simple Map</title>\n' +
-        '    <meta name="viewport" content="initial-scale=1.0">\n' +
-        '    <meta charset="utf-8">\n' +
-        '    <style>\n' +
-        '      /* Always set the map height explicitly to define the size of the div\n' +
-        '       * element that contains the map. */\n' +
-        '      #map {\n' +
-        '        height: 100%;\n' +
-        '      }\n' +
-        '      /* Optional: Makes the sample page fill the window. */\n' +
-        '      html, body {\n' +
-        '        height: 100%;\n' +
-        '        margin: 0;\n' +
-        '        padding: 0;\n' +
-        '      }\n' +
-        '    </style>\n' +
-        '  </head>\n' +
-        '  <body>\n' +
-        '    <div id="map"></div>\n' +
-        '    <script>\n' +
-        '      var map;\n' +
-        '      function initMap() {\n' +
-        '        map = new google.maps.Map(document.getElementById(\'map\'), {\n' +
-        '          center: {lat: -34.397, lng: 150.644},\n' +
-        '          zoom: 8\n' +
-        '        });\n' +
-        '      }\n' +
-        '    </script>\n' +
-        '    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihwcjUOYV5BOj87XhHSbOQY9CdLjesO4&callback=initMap"\n' +
-        '    async defer></script>\n' +
-        '  </body>\n' +
-        '</html>');
+    res.sendFile('views/map.html', { root: __dirname });
 
 })
 
