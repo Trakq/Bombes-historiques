@@ -1,7 +1,5 @@
-
-
 const { Client } = require('pg');
-const client = new Client({
+const database = new Client({
     user: 'postgres',
     host: 'localhost',
     database: 'bombes_historiques',
@@ -9,41 +7,19 @@ const client = new Client({
     port: 5432,
 });
 
-async function bienvenue() {
-    await client.connect();
-    const res = await client.query('SELECT $1::text as message', ['Hello world!']);
-    console.log(res.rows[0].message); // Hello world!
-    await client.end()
-}
-
-async function bob() {
-    try {
-        await bienvenue()
-    } catch (e) {
-        console.error(e.message)
-    }
-}
-
-bob();
-
-
-/*getInfoBombes(3, function() {
-    console.log.....
-})*/
-
 class InfosDB {
     /**
      * Retourne la liste à utiliser dans la page principale
      * @param callback
      */
     static getBombList(callback) {
-        callback(null, [
-            {
-                name:'test'
-            },
-            {
-                name:'test 2'
-            }
-        ]);
+        database.connect(function(err) {
+            if (err) throw err;
+            database.query("SELECT * FROM bombes", function (err, result) {
+                if (err) throw err;
+                let data = result;
+                //callbacker et returner err
+            });
+        });
     }
 }
