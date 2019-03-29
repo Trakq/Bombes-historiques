@@ -1,36 +1,31 @@
+const { Client } = require('pg');
+const database = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'bombes_historiques',
+    password: 'Bananes19',
+    port: 5432,
+});
+
 class InfosDB {
     /**
      * Retourne la liste à utiliser dans la page principale
      * @param callback
      */
     static getBombList(callback) {
-        callback(null, [
-            {
-                name:'test'
-            },
-            {
-                name:'test 2'
-            }
-        ]);
+        let data = [];
+        database.connect(function(err) {
+            if (err) throw err;
+            database.query("SELECT * FROM bombes", function (err, result) {
+                if (err) throw err;
+                data = result;
+                //callbacker et returner err
+                console.log(data);
+            });
+        });
     }
 
-    /**
-     * Retourne nom bombe
-     * @param callback
-     */
-    static getNom(callback) {
-        callback(null, [
-            {
-                name:'Little Boy'
-            },
-            {
-                name:'Fat Man'
-            }
-        ]);
-    }
-
-
-    /**
+/**
      * Pour ajouter bombe dans db
      * @param callback
      *//*
@@ -80,3 +75,5 @@ class InfosDB {
     }
     */
 }
+
+module.exports = InfosDB;

@@ -1,25 +1,19 @@
-const { Client } = require('pg');
-const database = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'bombes_historiques',
-    password: 'Bananes19',
-    port: 5432,
-});
 
-class InfosDB {
-    /**
-     * Retourne la liste à utiliser dans la page principale
-     * @param callback
-     */
-    static getBombList(callback) {
-        database.connect(function(err) {
-            if (err) throw err;
-            database.query("SELECT * FROM bombes", function (err, result) {
-                if (err) throw err;
-                let data = result;
-                //callbacker et returner err
-            });
-        });
-    }
-}
+const Database_functions = require('./Database_functions.js');
+
+Database_functions.getBombList();
+
+
+
+
+
+/*describe('#indexOf()', function() {
+    it('should return -1 when the value is not present', function() {
+        Databse_functions.dfsfsdfsdf((err, data) => {
+            assert.equal([1, 2, 3].indexOf(4), -1);
+            assert.equal([1, 2, 3].indexOf(4), -1);
+        })
+    });
+});*/
+
+
