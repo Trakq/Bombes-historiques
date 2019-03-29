@@ -1,0 +1,11 @@
+{
+  "dev": {
+    "driver": "pg",
+    "host": "localhost",
+    "port": "5432",
+    "user": "postgres",
+    "password": "postgres",
+    "database": "bombes_historiques_db"
+  },
+   "sql-file" : true
+}
