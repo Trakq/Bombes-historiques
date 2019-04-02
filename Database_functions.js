@@ -19,8 +19,8 @@ class InfosDB {
             database.query("SELECT * FROM bombes", function (err, result) {
                 if (err) throw err;
                 data = result;
-                //callbacker et returner err
                 console.log(data);
+                //callbacker et returner err
             });
         });
     }
