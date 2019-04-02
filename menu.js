@@ -13,11 +13,10 @@ app.get('/mainPage', function(req, res) {
 })
 
     .use(function(req, res, next){
-        res.setHeader('Content-Type', 'text/plain');
-        res.status(404).send('Page introuvable !');
-    });
+        res.redirect('/mainPage');
+    })
 
-app.listen(8080);
+.listen(8080);
 
 
 
