@@ -6,7 +6,6 @@ var app = express();
 app.get('/mainPage', function(req, res) {
     res.setHeader('Content-Type', 'text/html');
     res.sendFile('views/map.html', { root: __dirname });
-
 })
 
 
@@ -14,6 +13,8 @@ app.get('/mainPage', function(req, res) {
     .get('/menu', function(req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.send('Bienvenue dans le menu');
+        //À lire pour comprendre les popup https://www.toutjavascript.com/savoir/savoir15.php3
+        // À regarder https://www.youtube.com/watch?v=gLWIYk0Sd38
 })
 
     .use(function(req, res, next){
