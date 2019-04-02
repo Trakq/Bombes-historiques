@@ -45,7 +45,18 @@ class InfosDB {
      * Pour supprimer bombe dans db
      * @param callback
      */
-    /*
+
+    let sql = `INSERT INTO bombes(nom,reaction_chimique, pays, date_explosion, puissance)
+           VALUES('aaa, abcdef, can, 1999-11-08, 100000)`;
+
+// execute the insert statment
+
+    database.query("SELECT * FROM bombes", function (err, result) {
+        if (err) throw err;
+        this.sql;
+    });
+
+
     static supprimerBombe(callback) {
         callback(null, [
             {
@@ -56,7 +67,7 @@ class InfosDB {
             }
         ]);
     }
-    */
+
 
     /**
      * Pour modifier bombe dans db
