@@ -3,13 +3,11 @@ var express = require('express');
 var app = express();
 
 //Portion de code provenant de https://developers.google.com/maps/documentation/javascript/examples/map-simple
-app.get('/menu', function(req, res) {
-    res.setHeader('Content-Type', 'text/html');
+app.get('/mainPage', function(req, res) {
     res.sendFile('views/map.html', { root: __dirname });
-
 })
 
-    .get('/mainPage', function(req, res) {
+    .get('/menu', function(req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.send('Bienvenue dans le menu');
 })
