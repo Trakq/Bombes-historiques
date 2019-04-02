@@ -12,6 +12,7 @@
   "dependencies": {
     "basic-auth": "^2.0.1",
     "ejs": "^2.6.1",
+    "pg": "^7.8.2",
     "express": "^4.16.4",
     "htpasswd": "^2.4.0",
     "http-auth": "^3.2.3"
