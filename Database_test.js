@@ -1,9 +1,10 @@
 
 const Database_functions = require('./Database_functions.js');
 
+
+Database_functions.addBomb();
+console.log('fdgdgfg');
 Database_functions.getBombList();
-
-
 
 
 
