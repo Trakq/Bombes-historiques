@@ -5,7 +5,7 @@
 -- Dumped from database version 11.2
 -- Dumped by pg_dump version 11.2
 
--- Started on 2019-04-02 11:20:07
+-- Started on 2019-04-05 10:00:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,6 +16,139 @@ SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
+
+DROP DATABASE bombes_historiques;
+--
+-- TOC entry 2828 (class 1262 OID 16400)
+-- Name: bombes_historiques; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE bombes_historiques WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'French_Canada.1252' LC_CTYPE = 'French_Canada.1252';
+
+
+ALTER DATABASE bombes_historiques OWNER TO postgres;
+
+\connect bombes_historiques
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 196 (class 1259 OID 16401)
+-- Name: bombes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bombes (
+    nom text,
+    reaction_chimique text,
+    pays text,
+    id integer NOT NULL,
+    date_explosion date,
+    puissance integer
+);
+
+
+ALTER TABLE public.bombes OWNER TO postgres;
+
+--
+-- TOC entry 2829 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: COLUMN bombes.puissance; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.bombes.puissance IS 'puissance en kt de TNT (TNT = 1)';
+
+
+--
+-- TOC entry 197 (class 1259 OID 16407)
+-- Name: bombes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bombes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bombes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2830 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: bombes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bombes_id_seq OWNED BY public.bombes.id;
+
+
+--
+-- TOC entry 199 (class 1259 OID 16420)
+-- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.migrations (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    run_on timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16418)
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.migrations_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2831 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
+
+
+--
+-- TOC entry 2692 (class 2604 OID 16409)
+-- Name: bombes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bombes ALTER COLUMN id SET DEFAULT nextval('public.bombes_id_seq'::regclass);
+
+
+--
+-- TOC entry 2693 (class 2604 OID 16423)
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
 
 --
 -- TOC entry 2819 (class 0 OID 16401)
@@ -49,16 +182,16 @@ INSERT INTO public.migrations VALUES (1, '/20190329133149-add-people', '2019-04-
 
 
 --
--- TOC entry 2831 (class 0 OID 0)
+-- TOC entry 2832 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: bombes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bombes_id_seq', 16, true);
+SELECT pg_catalog.setval('public.bombes_id_seq', 20, true);
 
 
 --
--- TOC entry 2832 (class 0 OID 0)
+-- TOC entry 2833 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -66,7 +199,25 @@ SELECT pg_catalog.setval('public.bombes_id_seq', 16, true);
 SELECT pg_catalog.setval('public.migrations_id_seq', 1, true);
 
 
--- Completed on 2019-04-02 11:20:07
+--
+-- TOC entry 2695 (class 2606 OID 16417)
+-- Name: bombes bombes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bombes
+    ADD CONSTRAINT bombes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2697 (class 2606 OID 16425)
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2019-04-05 10:00:11
 
 --
 -- PostgreSQL database dump complete
