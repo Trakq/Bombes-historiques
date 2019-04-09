@@ -16,6 +16,7 @@ class InfosDB {
         let data = [];
         database.connect(function(err) {
             database.query("SELECT * FROM bombes", function (err, result) {
+                database.connection.close();
                 data = result;
                 console.log(data);
                 if (err) {
@@ -25,7 +26,6 @@ class InfosDB {
                 }
             });
         });
-        database.connection.close();
     }
 
 /**
