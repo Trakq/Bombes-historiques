@@ -12,10 +12,16 @@ app.get('/mainPage', function(req, res) {
     
     .get('/menu', function(req, res) {
         res.setHeader('Content-Type', 'text/html');
-        res.send('Bienvenue dans le menu');
+        //res.send('Bienvenue dans le menu');
+        res.sendFile('views/menu.html', {root: __dirname});
         //À lire pour comprendre les popup https://www.toutjavascript.com/savoir/savoir15.php3
         // À regarder https://www.youtube.com/watch?v=gLWIYk0Sd38
 })
+
+    .get('/bombes', function(req, res) {
+        res.setHeader('Content-Type', 'text/html');
+        res.sendFile('views/bombes.html', {root: __dirname});
+    })
 
     .use(function(req, res, next){
         res.setHeader('Content-Type', 'text/plain');
