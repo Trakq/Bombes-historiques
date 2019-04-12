@@ -16,13 +16,13 @@ class InfosDB {
         let data = [];
         database.connect(function(err) {
             database.query("SELECT * FROM bombes", function (err, result) {
-                database.connection.close();
+                //database.connection.close();
                 data = result;
-                console.log(data);
+
                 if (err) {
-                    console.log(err.stack)
+                    callback(err);
                 } else {
-                    console.log(data)
+                    callback(null, data.rows);
                 }
             });
         });
