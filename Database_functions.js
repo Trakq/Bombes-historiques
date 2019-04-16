@@ -1,5 +1,5 @@
-const { Client } = require('pg');
-const database = new Client({
+const {Pool} = require('pg');
+const pgPool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'bombes_historiques',
@@ -14,45 +14,43 @@ class InfosDB {
      */
     static getBombList(callback) {
         let data = [];
-        database.connect(function(err) {
-            database.query("SELECT * FROM bombes", function (err, result) {
-                //database.connection.close();
-                data = result;
+        pgPool.connect(function (err) {
+            pgPool.query("SELECT * FROM bombes", function (err, result) {
 
-                if (err) {
-                    callback(err);
-                } else {
-                    callback(null, data.rows);
+                    data = result;
+                    pgPool.release;
+                    if (err) {
+                        callback(err);
+                    } else {
+                        callback(null, data.rows);
+                    }
                 }
-            });
+
+            );
         });
+
     }
 
-/**
+    /**
      * Pour ajouter bombe dans db
      * @param callback
      */
 
-     //Fonctionne
-    /*
+    //Fonctionne
+
     static ajouterBombe(callback) {
         const query = {
             text: 'INSERT INTO bombes(nom, reaction_chimique, pays, date_explosion, puissance) VALUES($1, $2, $3, $4, $5)',
             values: ['aaa', 'abcdef', 'can', '1999-11-08', '1000'],
         };
 
-        database.connect(function(err) {
-            database.query(query, (err, res) => {
-                if (err) {
-                    console.log(err.stack)
-                } else {
-                    console.log(res.rows[0])
-                }
-
+        pgPool.connect(function (err) {
+            pgPool.query(query, (err, res) => {
+                pgPool.release;
+                callback(err);
             })
-            });
-        database.connection.close();
-    };*/
+        });
+    };
 
 
     /**
@@ -60,33 +58,17 @@ class InfosDB {
      * @param callback
      */
 
-    /*static supprimerBombe(idBombe, callback) {
+    static supprimerBombe(idBombe, callback) {
 
-        database.connect(function(err) {
-            database.query("DELETE FROM bombes WHERE id = ?", idBombe, (err, res) => {
-                if (err) {
-                    console.log(err.stack)
-                } else {
-                    console.log()
-                }
+        pgPool.connect(function (err) {
+            pgPool.query("DELETE FROM bombes WHERE id = ?", idBombe, (err, res) => {
+                pgPool.release;
+                callback(err);
+
             })
         });
-        database.connection.close();
-    };*/
+    };
 
-
-
-    /*static supprimerBombe(callback) {
-        callback(null, [
-            {
-                date:'1945-08-06'
-            },
-            {
-                pays:'1945-08-09'
-            }
-        ]);
-    }
-*/
 
     /**
      * Pour modifier bombe dans db
