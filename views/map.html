@@ -10,8 +10,31 @@
 <body>
 
 <div id="map"></div>
-<div id = "bombeSelector">
+<div class="bombeSelector">
     <h3>Bombes à choisir</h3>
+
+    <hr>
+
+    <h3>Sélectionnez une bombe</h3>
+    <select id = "choixBombe" name = "choixBombe" class="dropDown">
+        <option value = "nucléaire">Nucléaire</option>
+        <option value = "dinamite">Dinamite</option>
+        <option value = "bombeH">Bombe H</option>
+    </select>
+
+    <hr>
+
+    <h3>Sélectionnez une localisation prédéfinie</h3>
+
+    <select id = "pays" name = "pays" class="dropDown">
+        <option value = "paris">Paris</option>
+        <option value = "newyork">New York</option>
+        <option value = "tokyo">Tokyo</option>
+    </select>
+
+    <h3>Estimation du nombre de morts :</h3>
+
+    <a href="./bombes" class="bouton">Accéder aux bombes</a>
 </div>
 <div id="floating-panel">
     <input id="latlng" type="text" value="40.714224,-73.961452">

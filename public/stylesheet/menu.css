@@ -17,19 +17,19 @@ html, body {
     border-radius: 40px;
 }
 
-.option {
-    background: black;
-    border: 1px black;
-    border-radius: 3px;
-    color: white;
-    display: inline-block;
-    margin: 10px;
-    padding: 14px;
-    text-decoration: none;
-    font-size: 18px;
-}
+.bouton {
+     background: black;
+     border: 1px black;
+     border-radius: 3px;
+     color: white;
+     display: inline-block;
+     margin: 10px;
+     padding: 14px;
+     text-decoration: none;
+     font-size: 18px;
+ }
 
-.option:hover {
+.bouton:hover {
     background: white;
     border: 1px solid black;
     color: black;
