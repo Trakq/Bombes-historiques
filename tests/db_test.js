@@ -15,7 +15,7 @@ describe('tests de db', function() {
         })
     });
 });
-
+/*
 describe('test ajouterBombe', function() {
 
     it("should add a bomb to the db", function(done) {
@@ -43,3 +43,4 @@ describe('test supprimerBombe', function() {
             })
     });
 });
+*/

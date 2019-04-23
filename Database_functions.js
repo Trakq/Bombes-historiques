@@ -16,12 +16,12 @@ class InfosDB {
         let data = [];
         pgPool.connect(function (err) {
             pgPool.query("SELECT * FROM bombes", function (err, result) {
-
                     data = result;
-                    pgPool.release();
+                    pgPool.end();
                     if (err) {
                         callback(err);
                     } else {
+                        console.log(data.rows);
                         callback(null, data.rows);
                     }
                 }
@@ -35,16 +35,13 @@ class InfosDB {
      * Pour ajouter bombe dans db
      * @param callback
      */
-
-    /*
-
+/*
     static ajouterBombe(nom, reaction_chimique, pays , date_explosion, puissance, callback) {
         const query = 'INSERT INTO bombes(nom, reaction_chimique, pays, date_explosion, puissance) VALUES($1, $2, $3, $4, $5)';
 
         pgPool.connect(function (err) {
             pgPool.query(query, [nom, reaction_chimique, pays , date_explosion, puissance], (err, res) => {
                 pgPool.release();
-                RETURNING id; // erreur
                 callback(err);
             })
         });
