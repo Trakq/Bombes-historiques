@@ -18,7 +18,7 @@ class InfosDB {
             pgPool.query("SELECT * FROM bombes", function (err, result) {
 
                     data = result;
-                    pgPool.release;
+                    pgPool.release();
                     if (err) {
                         callback(err);
                     } else {
@@ -36,28 +36,26 @@ class InfosDB {
      * @param callback
      */
 
-    //Fonctionne
+    /*
 
-    static ajouterBombe(callback) {
-        const query = {
-            text: 'INSERT INTO bombes(nom, reaction_chimique, pays, date_explosion, puissance) VALUES($1, $2, $3, $4, $5)',
-            values: ['aaa', 'abcdef', 'can', '1999-11-08', '1000'],
-        };
+    static ajouterBombe(nom, reaction_chimique, pays , date_explosion, puissance, callback) {
+        const query = 'INSERT INTO bombes(nom, reaction_chimique, pays, date_explosion, puissance) VALUES($1, $2, $3, $4, $5)';
 
         pgPool.connect(function (err) {
-            pgPool.query(query, (err, res) => {
-                pgPool.release;
+            pgPool.query(query, [nom, reaction_chimique, pays , date_explosion, puissance], (err, res) => {
+                pgPool.release();
+                RETURNING id; // erreur
                 callback(err);
             })
         });
-    };
+    };*/
 
 
     /**
      * Pour supprimer bombe dans db
      * @param callback
      */
-
+/*
     static supprimerBombe(idBombe, callback) {
 
         pgPool.connect(function (err) {
@@ -67,25 +65,7 @@ class InfosDB {
 
             })
         });
-    };
-
-
-    /**
-     * Pour modifier bombe dans db
-     * @param callback
-     */
-    /*
-    static modifierBombe(callback) {
-        callback(null, [
-            {
-                date:'1945-08-06'
-            },
-            {
-                pays:'1945-08-09'
-            }
-        ]);
-    }
-    */
+    };*/
 }
 
 module.exports = InfosDB;
