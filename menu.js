@@ -1,36 +1,44 @@
 var express = require('express');
 
+const InfoDataBase = require('./Database_functions');
+
 var app = express();
 
 app.use('/', express.static('public'));
 
 //Portion de code provenant de https://developers.google.com/maps/documentation/javascript/examples/map-simple
-app.get('/mainPage', function(req, res) {
+app.get('/mainPage', function (req, res) {
+
+    /*
+    // let fileContent = readfile views/map.html
+    // let bombeInfos = db query pour avoir info bombes InfoDataBase.getBombList()
+    // let formattedForDebugPasMal = JSON.stringify(bombeInfos, null, 4)
+    // let dataToSend = fileContent.replace('##############info_content##############', bombeInfos.formatMoiCaBeau())
+
     res.setHeader('Content-Type', 'text/html');
-    res.sendFile('views/map.html', { root: __dirname });
+    // res.sendFile('views/map.html', {root: __dirname});
+    res.send(dataToSend);
+    */
 })
 
-
-    
-    .get('/menu', function(req, res) {
+    .get('/menu', function (req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.sendFile('views/menu.html', {root: __dirname});
         //À lire pour comprendre les popup https://www.toutjavascript.com/savoir/savoir15.php3
         // À regarder https://www.youtube.com/watch?v=gLWIYk0Sd38
         //https://www.cssfontstack.com/ pour choisir des fonts
-})
+    })
 
-    .get('/bombes', function(req, res) {
+    .get('/bombes', function (req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.sendFile('views/bombes.html', {root: __dirname});
     })
 
-    .use(function(req, res, next){
+    .use(function (req, res, next) {
         res.redirect('/menu');
     });
 
 app.listen(8080);
-
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------
