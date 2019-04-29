@@ -21,7 +21,7 @@ class InfosDB {
                     if (err) {
                         callback(err);
                     } else {
-                        console.log(data.rows);
+                        //console.log(data.rows);
                         callback(null, data.rows);
                     }
                 }

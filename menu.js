@@ -11,7 +11,14 @@ app.get('/mainPage', function (req, res) {
 
     /*
     // let fileContent = readfile views/map.html
-    // let bombeInfos = db query pour avoir info bombes InfoDataBase.getBombList()
+
+    // let bombeInfos = InfoDataBase.getBombList(function(err, data){
+
+    //code pour stocker infos dans un array ou qqchose du genre
+      bombeInfos = []???????
+
+    })
+
     // let formattedForDebugPasMal = JSON.stringify(bombeInfos, null, 4)
     // let dataToSend = fileContent.replace('##############info_content##############', bombeInfos.formatMoiCaBeau())
 
