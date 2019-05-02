@@ -3,7 +3,7 @@ const pgPool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'bombes_historiques',
-    password: 'Bananes19',
+    password: 'admin',
     port: 5432,
 });
 
@@ -21,7 +21,6 @@ class InfosDB {
                     if (err) {
                         callback(err);
                     } else {
-                        //console.log(data.rows);
                         callback(null, data.rows);
                     }
                 }

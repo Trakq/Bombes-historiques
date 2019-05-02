@@ -139,15 +139,7 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 -- Name: bombes id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.bombes ALTER COLUMN id SET DEFAULT nextval('public.bombes_id_seq'::regclass);
-
-
---
--- TOC entry 2693 (class 2604 OID 16423)
--- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+ALTER SEQUENCE public.bombes_id_seq OWNED BY public.bombes.id;
 
 
 --

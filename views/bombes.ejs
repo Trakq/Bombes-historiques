@@ -10,12 +10,12 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function()
+        /*$(document).ready(function()
         {
 
             document.getElementById("bombes").innerHTML += "<div>Allooooooo</div>";
 
-        });
+        });*/
 
     </script>
 </head>
@@ -27,17 +27,25 @@
 </div>
 
 <div id = "bombes">
-    <a href="#dinamite">Dinamite</a>
-    <a>Nucléaire</a>
-    <a  href="#bombeH">Bombe H</a>
-    ##############menu_content##############
+    <%
+    for(var i = 0 ; i < nom.length ; i++) {
+    %>
+
+        <a href="#<%= nom[i]%>"><%= nom[i] %></a>
+
+    <% } %>
     <a href="./mainPage" class="bouton">Retour à la map</a>
 </div>
 
 <div id = "info">
-    <pre>
-    ##############info_content##############
-    </pre>
+    <%
+    for(var i = 0 ; i < nom.length ; i++) {
+    %>
+
+        <h2><%= nom[i] %></h2>
+        <p>Cette bombe à été créer en <%= nom[i]%> et elle a été détonnée en <%= date[i]%> avec une puissance de <%= puissance[i]%> kilotones de TNT. La formule chimique de la réaction de cette bombe est <%= reaction[i]%>.</p>
+
+    <% } %>
 </div>
 
 </body>

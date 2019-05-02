@@ -14,7 +14,7 @@ p {
 
 h2 {
     position: relative;
-    left: 35%;
+    text-align: center;
 }
 
 a {
@@ -40,13 +40,13 @@ a {
     border-radius: 10px;
     margin: 2px 5px;
     padding: 10px 0px;
-    width: 20%;
+    width: 250px;
     height: 700px;
     text-align: center;
 }
 
 #info {
-    background-color: mistyrose;
+    background-color: lightgray;
     overflow: scroll;
     position: absolute;
     border-radius: 10px;
@@ -59,8 +59,9 @@ a {
 }
 
 .bouton {
-    position: relative;
-    top: 500px;
+    position: absolute;
+    bottom: 20px;
+    left: 45px;
     background: black;
     border: 1px black;
     border-radius: 3px;
