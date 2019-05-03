@@ -11,8 +11,11 @@ app.use('/', express.static('public'));
 var paysBombe = [], nomBombe = [], reactionChimiqueBombe = [], dateExplosionBombe = [], puissanceBombe = [];
 var i = 0;
 
-InfoDataBase.getBombList(function(err, data)
-{
+InfoDataBase.getBombList(function(err, data) {
+    if (err)
+    {
+        console.error(err);
+    }
     data.forEach(function(element)
     {
         nomBombe[i] = element.nom;
@@ -28,7 +31,7 @@ InfoDataBase.getBombList(function(err, data)
 //Portion de code provenant de https://developers.google.com/maps/documentation/javascript/examples/map-simple
 app.get('/mainPage', function (req, res) {
     res.setHeader('Content-Type', 'text/html');
-    res.render('map', {nom: nomBombe});
+    res.render('map', {nom: nomBombe, puissance: puissanceBombe});
     //res.sendFile('views/map.html', {root: __dirname});
 
     //let fileContent = readfile("views/map.html");

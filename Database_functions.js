@@ -15,7 +15,7 @@ class InfosDB {
     static getBombList(callback) {
         let data = [];
         pgPool.connect(function (err) {
-            pgPool.query("SELECT * FROM bombes", function (err, result) {
+            pgPool.query("SELECT * FROM bombes ORDER BY id", function (err, result) {
                     data = result;
                     pgPool.end();
                     if (err) {

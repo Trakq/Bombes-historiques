@@ -31,7 +31,7 @@
     for(var i = 0 ; i < nom.length ; i++) {
     %>
 
-        <a href="#<%= nom[i]%>"><%= nom[i] %></a>
+        <a href="#<%= i%>"><%= nom[i] %></a>
 
     <% } %>
     <a href="./mainPage" class="bouton">Retour à la map</a>
@@ -42,8 +42,8 @@
     for(var i = 0 ; i < nom.length ; i++) {
     %>
 
-        <h2><%= nom[i] %></h2>
-        <p>Cette bombe à été créer en <%= nom[i]%> et elle a été détonnée en <%= date[i]%> avec une puissance de <%= puissance[i]%> kilotones de TNT. La formule chimique de la réaction de cette bombe est <%= reaction[i]%>.</p>
+        <h2 id = "<%= i%>"><%= nom[i] %></h2>
+        <p>Cette bombe a été créée <%= pays[i]%> et elle a été détonnée le <%= date[i]%> avec une puissance de <%= puissance[i]%> kilotones de TNT. La formule chimique de la réaction de cette bombe est <%= reaction[i]%>.</p>
 
     <% } %>
 </div>
