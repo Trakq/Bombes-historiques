@@ -78,3 +78,18 @@ a {
     border: 1px solid black;
     color: black;
 }
+
+.find {
+    background: #ff4d4d;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    margin: 23px;
+    border-radius: 5px;
+}
+
+.find:hover {
+    background: #ffcccc;
+    border: 1px solid black;
+    color: black;
+}

@@ -24,8 +24,6 @@
         <% } %>
     </select>
 
-    <input type="text" id="txtvalue"/>
-
     <hr>
 
     <h3>Sélectionnez une localisation prédéfinie</h3>
@@ -44,6 +42,7 @@
     <input id="latlng" type="text" value="40.714224,-73.961452">
     <input id="submit" type="button" value="Reverse Geocode">
 </div>
+
 <script>
 
     // In the following example, markers appear when the user clicks on the map.
@@ -79,21 +78,18 @@
         // map: map,
         var bombe = document.getElementById("choixBombe");
         var choix = bombe.options[bombe.selectedIndex].text;
+        var nom = ["Poudre noire", "TNT", "Arme nucléaire terroriste", "Little Boy", "Fat Man", "Tinderbox/Colwick",
+                    "Bombe de la Corée du Nord", "Canopus", "DF-5A", "Ivy Mike", "Castle Bravo", "Tsar Bomba"];
 
         for (var i = 0; i < 12; i++)
         {
-            if (choix ===  "TNT")
+            if (choix ===  nom[i])
             {
-
-                var radius1 = 100;
-                //var radius2 = 60000;
-                //var radius3 = 100000;
+                var radius1 = Math.sqrt(((i*i) + 1) * 10) * 100;
+                var radius2 = Math.sqrt(((i*i) + 1) * 50) * 100;
+                var radius3 = Math.sqrt(((i*i) + 1) * 200) * 100;
             }
         }
-        //console.log(nom[0]);
-        //var radius1 = 10000;
-        var radius2 = 60000;
-        var radius3 = 100000;
 
         var cityCircle3 = new google.maps.Circle({
             strokeColor: '#FFF000',
