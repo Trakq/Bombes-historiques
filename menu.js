@@ -56,6 +56,11 @@ app.get('/mainPage', function (req, res) {
         res.render('bombes', {nom: nomBombe, pays: paysBombe, date: dateExplosionBombe, reaction: reactionChimiqueBombe, puissance: puissanceBombe});
         //res.sendFile('views/bombes.html', {root: __dirname});
     })
+    /*.get('/guide', function(req, res) {
+        res.setHeader('Content-Type', 'text/html');
+        res.sendFile('views/guide.html', {root: __dirname});
+      //  res.render('guide', {name: req.params.name});
+    })*/
 
     .use(function (req, res, next) {
         res.redirect('/menu');
