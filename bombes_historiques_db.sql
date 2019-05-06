@@ -148,20 +148,20 @@ ALTER SEQUENCE public.bombes_id_seq OWNED BY public.bombes.id;
 -- Data for Name: bombes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.bombes VALUES ('Tinderbox/Colwick', NULL, 'Grande-Bretagne', 10, '1980-04-26', 140);
-INSERT INTO public.bombes VALUES ('DF-5A', NULL, 'Chine', 13, '1981-01-01', 5000);
-INSERT INTO public.bombes VALUES ('Poudre noire', '2 KNO3 + 3 C + S → K2S + 3 CO2 + N2 ', 'Chine
+INSERT INTO public.bombes VALUES ('Tinderbox/Colwick', 'inconnue', 'en Grande-Bretagne', 10, '1980-04-26', 140);
+INSERT INTO public.bombes VALUES ('DF-5A', 'inconnue', 'en Chine', 13, '1981-01-01', 5000);
+INSERT INTO public.bombes VALUES ('Poudre noire', '2 KNO3 + 3 C + S → K2S + 3 CO2 + N2 ', 'en Chine
 ', 5, '0840-01-01', 0);
-INSERT INTO public.bombes VALUES ('TNT', '2 C7H5N3O6 → 3 N2 + 5 H2 + 12 CO + 2 C ', 'Allemagne
+INSERT INTO public.bombes VALUES ('TNT', '2 C7H5N3O6 → 3 N2 + 5 H2 + 12 CO + 2 C ', 'en Allemagne
 ', 6, '1863-01-01', 1);
-INSERT INTO public.bombes VALUES ('Arme nucléaire terroriste', 'n + 235U → Ba + Kr + 3 n ', 'Terroriste', 7, '0001-01-01', 10);
-INSERT INTO public.bombes VALUES ('Little Boy', 'D + T → 4 He + n + 17,6 MeV ', 'États-Unis', 8, '1945-08-06', 15);
-INSERT INTO public.bombes VALUES ('Fat Man', 'Noyau de plutonium 239 entouré de 5300lbs d''explosifs. ', 'États-Unis', 9, '1945-08-09', 27);
-INSERT INTO public.bombes VALUES (NULL, 'D + D → 3 He + n + 3,3 MeV ', 'Corée du Nord', 11, '2017-09-03', 140);
-INSERT INTO public.bombes VALUES ('Canopus', 'D + T → 4 He + n + 17,6 MeV', 'France', 12, '1968-08-24', 2600);
-INSERT INTO public.bombes VALUES ('Ivy Mike', '7 Li + n → T + 4 He + n ', 'États-Unis', 14, '1952-11-01', 10400);
-INSERT INTO public.bombes VALUES ('Castle Bravo', 'T + D → 4He + n → n + 6Li → 4He + T (et continue en boucle jusqu’à ce que ce soit impossible)', 'États-Unis', 15, '1954-03-01', 15000);
-INSERT INTO public.bombes VALUES ('Tsar Bomba', '3 He + D → 4 He + p ', 'Russie', 16, '1961-10-01', 57000);
+INSERT INTO public.bombes VALUES ('Arme nucléaire terroriste', 'n + 235U → Ba + Kr + 3 n ', 'par des terroristes', 7, '0001-01-01', 10);
+INSERT INTO public.bombes VALUES ('Little Boy', 'D + T → 4 He + n + 17,6 MeV ', 'aux États-Unis', 8, '1945-08-06', 15);
+INSERT INTO public.bombes VALUES ('Fat Man', 'Noyau de plutonium 239 entouré de 5300lbs d''explosifs. ', 'aux États-Unis', 9, '1945-08-09', 27);
+INSERT INTO public.bombes VALUES ('Bombe de la Corée du Nord', 'D + D → 3 He + n + 3,3 MeV ', 'en Corée du Nord', 11, '2017-09-03', 140);
+INSERT INTO public.bombes VALUES ('Canopus', 'D + T → 4 He + n + 17,6 MeV', 'en France', 12, '1968-08-24', 2600);
+INSERT INTO public.bombes VALUES ('Ivy Mike', '7 Li + n → T + 4 He + n ', 'aux États-Unis', 14, '1952-11-01', 10400);
+INSERT INTO public.bombes VALUES ('Castle Bravo', 'T + D → 4He + n → n + 6Li → 4He + T (et continue en boucle jusqu’à ce que ce soit impossible)', 'aux États-Unis', 15, '1954-03-01', 15000);
+INSERT INTO public.bombes VALUES ('Tsar Bomba', '3 He + D → 4 He + p ', 'en Russie', 16, '1961-10-01', 57000);
 
 
 --

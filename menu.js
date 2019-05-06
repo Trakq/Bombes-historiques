@@ -34,15 +34,6 @@ app.get('/mainPage', function (req, res) {
     res.render('map', {nom: nomBombe, puissance: puissanceBombe});
     //res.sendFile('views/map.html', {root: __dirname});
 
-    //let fileContent = readfile("views/map.html");
-
-
-    console.log(fileContent);
-
-    // let formattedForDebugPasMal = JSON.stringify(bombeInfos, null, 4)
-    // let dataToSend = fileContent.replace('##############info_content##############', bombeInfos.formatMoiCaBeau())
-
-    //res.send(dataToSend);
 })
 
     .get('/menu', function (req, res) {
@@ -56,11 +47,11 @@ app.get('/mainPage', function (req, res) {
         res.render('bombes', {nom: nomBombe, pays: paysBombe, date: dateExplosionBombe, reaction: reactionChimiqueBombe, puissance: puissanceBombe});
         //res.sendFile('views/bombes.html', {root: __dirname});
     })
-    /*.get('/guide', function(req, res) {
+    .get('/guide', function(req, res) {
         res.setHeader('Content-Type', 'text/html');
         res.sendFile('views/guide.html', {root: __dirname});
       //  res.render('guide', {name: req.params.name});
-    })*/
+    })
 
     .use(function (req, res, next) {
         res.redirect('/menu');
