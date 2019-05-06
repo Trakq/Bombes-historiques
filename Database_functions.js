@@ -1,3 +1,6 @@
+
+//Pool pour connecter à la db (requests de clients ne fonctionnaient pas pcq trop de demandes en même temps
+
 const {Pool} = require('pg');
 const pgPool = new Pool({
     user: 'postgres',
@@ -9,22 +12,21 @@ const pgPool = new Pool({
 
 class InfosDB {
     /**
-     * Retourne la liste à utiliser dans la page principale
+     * Retourne la liste à utiliser dans la page principale pour afficher les infos des bombes
      * @param callback
      */
     static getBombList(callback) {
         let data = [];
         pgPool.connect(function (err) {
-            pgPool.query("SELECT * FROM bombes ORDER BY id", function (err, result) {
+            pgPool.query("SELECT * FROM bombes ORDER BY id", function (err, result) { //va chercher toutes les infos de la db et les met en ordre de id, car pas en ordre dans pgadmin (raison inconnue)
                     data = result;
-                    pgPool.end();
+                    pgPool.end(); //fermer connection avec db pour éviter problèmes possible avec connection encore ouverte
                     if (err) {
                         callback(err);
                     } else {
                         callback(null, data.rows);
                     }
                 }
-
             );
         });
 
@@ -34,6 +36,9 @@ class InfosDB {
      * Pour ajouter bombe dans db
      * @param callback
      */
+
+    //Fonctionne, mais nous avons décidé d'abandonner cette fonction et l'autre en dessous. Par contre, celle en dessous ne fonctionne pas completement
+
 /*
     static ajouterBombe(nom, reaction_chimique, pays , date_explosion, puissance, callback) {
         const query = 'INSERT INTO bombes(nom, reaction_chimique, pays, date_explosion, puissance) VALUES($1, $2, $3, $4, $5)';

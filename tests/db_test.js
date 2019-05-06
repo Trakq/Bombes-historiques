@@ -3,7 +3,7 @@ var assert = require('assert');
 const Database_functions = require('../Database_functions');
 
 
-
+//test fonctionne
 describe('tests de db', function() {
 
     it("should get a list of bombs", function(done) {

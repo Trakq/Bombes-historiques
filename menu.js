@@ -11,6 +11,7 @@ app.use('/', express.static('public'));
 var paysBombe = [], nomBombe = [], reactionChimiqueBombe = [], dateExplosionBombe = [], puissanceBombe = [];
 var i = 0;
 
+//Fonction pour aller chercher infos dans db
 InfoDataBase.getBombList(function(err, data) {
     if (err)
     {
