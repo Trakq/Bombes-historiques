@@ -16,10 +16,12 @@
     <hr>
 
     <h3>Sélectionnez une bombe</h3>
-    <select id = "choixBombe" name = "choixBombe" class="dropDown">
-        <option value = "nucléaire">Nucléaire</option>
-        <option value = "dinamite">Dinamite</option>
-        <option value = "bombeH">Bombe H</option>
+    <select id = "choixBombe" name = "choixBombe" class="dropDown" onchange="selectBomb();">
+        <%
+        for(var i = 0 ; i < nom.length ; i++) {
+        %>
+            <option value = "<%= nom[i]%>"><%= nom[i] %></option>
+        <% } %>
     </select>
 
     <hr>
@@ -40,6 +42,7 @@
     <input id="latlng" type="text" value="40.714224,-73.961452">
     <input id="submit" type="button" value="Reverse Geocode">
 </div>
+
 <script>
 
     // In the following example, markers appear when the user clicks on the map.
@@ -71,19 +74,58 @@
     // Adds a marker to the map and push to the array.
     function addMarker(location) {
         //var marker = new google.maps.Marker({
-          //  position: location,
-           // map: map,
-            var cityCircle = new google.maps.Circle({
-                strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: '#FF0000',
-                fillOpacity: 0.35,
-                map: map,
-                center: location,
-                radius: Math.sqrt(6000000) * 100
+        //  position: location,
+        // map: map,
+        var bombe = document.getElementById("choixBombe");
+        var choix = bombe.options[bombe.selectedIndex].text;
+        var nom = ["Poudre noire", "TNT", "Arme nucléaire terroriste", "Little Boy", "Fat Man", "Tinderbox/Colwick",
+                    "Bombe de la Corée du Nord", "Canopus", "DF-5A", "Ivy Mike", "Castle Bravo", "Tsar Bomba"];
+
+        for (var i = 0; i < 12; i++)
+        {
+            if (choix ===  nom[i])
+            {
+                var radius1 = Math.sqrt(((i*i) + 1) * 10) * 100;
+                var radius2 = Math.sqrt(((i*i) + 1) * 50) * 100;
+                var radius3 = Math.sqrt(((i*i) + 1) * 200) * 100;
+            }
+        }
+
+        var cityCircle3 = new google.maps.Circle({
+            strokeColor: '#FFF000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FFF000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: radius3
         });
-            cityCircles.push(cityCircle);
+        cityCircles.push(cityCircle3);
+
+        var cityCircle2 = new google.maps.Circle({
+            strokeColor: '#FF7000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF7000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: radius2
+        });
+        cityCircles.push(cityCircle2);
+
+        var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: radius1
+        });
+        cityCircles.push(cityCircle);
         //markers.push(marker);
     }
     // Sets the map on all markers in the array.

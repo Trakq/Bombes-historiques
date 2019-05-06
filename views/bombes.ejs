@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bombes Historique</title>
+    <link href = "/stylesheet/bombes.css" rel = "stylesheet" type = "text/css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div id = "titre">
+    <h1>Informations concernant les bombes !</h1>
+</div>
+
+<div id = "bombes">
+    <%
+    for(var i = 0 ; i < nom.length ; i++) {
+    %>
+
+        <a href="#<%= i%>" class="find"><%= nom[i] %></a>
+
+    <% } %>
+    <a href="./mainPage" class="bouton">Retour à la map</a>
+</div>
+
+<div id = "info">
+    <%
+    for(var i = 0 ; i < nom.length ; i++) {
+    %>
+
+        <h2 id = "<%= i%>"><%= nom[i] %></h2>
+        <p>Cette bombe a été créée <%= pays[i]%> et elle a été détonnée le <%= date[i]%> avec une puissance de <%= puissance[i]%> kilotones de TNT. La formule chimique de la réaction de cette bombe est <%= reaction[i]%>.</p>
+
+    <% } %>
+</div>
+
+</body>
+
+</html>

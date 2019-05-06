@@ -1,0 +1,95 @@
+body {
+    font-family: 'Goudy Old Style', serif;
+}
+
+h1 {
+    position: relative;
+    top: 17px;
+    font-size: 45px;
+}
+
+p {
+    font-size: 17px;
+}
+
+h2 {
+    position: relative;
+    text-align: center;
+}
+
+a {
+    display: block;
+    font-size: 18px;
+    margin: 10px;
+}
+
+#titre {
+    position: relative;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 10px 5px;
+    border: 3px solid black;
+    border-radius: 10px;
+    height: 150px;
+}
+
+#bombes {
+    position: relative;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+    margin: 2px 5px;
+    padding: 10px 0px;
+    width: 250px;
+    height: 700px;
+    text-align: center;
+}
+
+#info {
+    background-color: lightgray;
+    overflow: scroll;
+    position: absolute;
+    border-radius: 10px;
+    padding: 20px;
+    top: 175px;
+    left: 268px;
+    width: 75%;
+    height: 75%;
+    text-align: justify;
+}
+
+.bouton {
+    position: absolute;
+    bottom: 20px;
+    left: 45px;
+    background: black;
+    border: 1px black;
+    border-radius: 3px;
+    color: white;
+    display: inline-block;
+    margin: 10px;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.bouton:hover {
+    background: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.find {
+    background: #ff4d4d;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    margin: 23px;
+    border-radius: 5px;
+}
+
+.find:hover {
+    background: #ffcccc;
+    border: 1px solid black;
+    color: black;
+}
